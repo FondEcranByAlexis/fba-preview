@@ -18,6 +18,22 @@ h1{font-size:clamp(40px,8vw,78px);line-height:1.06;margin:18px 0 22px;letter-spa
 h2{font-size:25px;margin-top:48px}.panel{padding:28px;border:1px solid #3b352c;background:#13151b;border-radius:18px;max-width:750px}.panel p{color:var(--muted)}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:30px 0}.step{border:1px solid #35343a;background:#14161c;padding:20px;border-radius:14px}.step b{color:var(--gold)}
 .cta{display:inline-block;margin-top:12px;padding:13px 22px;background:var(--gold);color:#17130b;border-radius:10px;font-weight:800}.note{font-size:13px;color:#aeb1bb;margin-top:25px}footer{border-top:1px solid #2d2e35;padding:24px;text-align:center;color:#a4a6ae;font-size:13px}
+
+/* Phase 2 — premium editions showroom */
+.edition-hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:30px;align-items:center}
+.gold-art{position:relative;min-height:340px;border-radius:24px;border:1px solid #8c713d;background:radial-gradient(circle at 60% 30%,#b9974e55,transparent 45%),linear-gradient(135deg,#20180f,#0c0e14 70%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 50px #0008,0 18px 60px #0007}
+.gold-art:before,.gold-art:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #b69a5a66;transform:rotate(45deg);border-radius:22px}.gold-art:after{width:170px;height:170px;transform:rotate(25deg);border-color:#e6cb8555}
+.gold-art-inner{z-index:1;text-align:center}.gold-art-inner strong{font-size:clamp(60px,9vw,100px);line-height:1;color:#f5dfaa;text-shadow:0 8px 35px #b8934a88;display:block;letter-spacing:-5px}.gold-art-inner small{display:block;font-size:12px;letter-spacing:5px;color:#e2c27a;font-weight:800}
+.section-heading{margin:75px 0 22px}.section-heading h2{font-size:clamp(26px,4vw,38px);margin:5px 0}.section-heading p{color:#b9bac2;max-width:680px}
+.edition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.edition-card{border:1px solid #37322a;background:#12151c;border-radius:18px;overflow:hidden}
+.edition-art{height:230px;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,#3b2818,#0b1019)}.edition-art:before{content:"";position:absolute;inset:20px;border:1px solid #b59a6244;border-radius:12px}.edition-art span{font-size:64px;font-weight:900;color:#e4c48166;letter-spacing:-5px}.edition-art i{position:absolute;bottom:22px;font-size:10px;letter-spacing:3px;color:#d7b76e;font-style:normal}
+.edition-card:nth-child(2) .edition-art{background:linear-gradient(145deg,#1a2d3d,#101018)}.edition-card:nth-child(3) .edition-art{background:linear-gradient(145deg,#332b37,#101015)}
+.edition-content{padding:20px}.edition-content h3{margin:7px 0;font-size:19px}.edition-content p{font-size:14px;color:#aeb1bb;margin:6px 0 15px}.edition-status{display:inline-flex;padding:5px 10px;border:1px solid #7d683e;border-radius:50px;color:#e3c98d;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:800}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.timeline div{padding:20px;border-left:2px solid #b79553;background:#14161b;border-radius:0 12px 12px 0}.timeline strong{color:#e7cb8e}.timeline p{color:#b4b7c0;font-size:14px}
+.faq details{border-bottom:1px solid #34343a;padding:16px 0}.faq summary{cursor:pointer;font-weight:700}.faq p{color:#b9bbc2}
+.preview-disclaimer{font-size:12px;color:#9ea2ac;margin-top:14px}
+@media(max-width:740px){main{padding-top:45px}.edition-hero{grid-template-columns:1fr}.gold-art{min-height:265px}.edition-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.section-heading{margin-top:55px}}
 </style>
 <link rel="stylesheet" href="fba-nav.css?v=20261110-0815">
 <script src="fba-nav.js?v=20261110-0815" defer></script>
@@ -25,23 +41,34 @@ h2{font-size:25px;margin-top:48px}.panel{padding:28px;border:1px solid #3b352c;b
 <body>
 <header class="fba-global-header"><a class="fba-global-brand" href="index.html" aria-label="Accueil FBA">FBA<span>.</span></a></header>
 <main>
-<div class="eyebrow">FBA Wallpapers · Collection exclusive</div>
-<h1>Éditions <span>limitées.</span></h1>
-<p class="intro">Une sélection de créations exclusives, proposées en séries limitées. Chaque édition disposera d'une numérotation et d'une identité visuelle distinctive.</p>
-<div class="ticket" aria-label="Signature des éditions limitées : billet d'or zéro sur cent"><div><small>BILLET D'OR · SIGNATURE FBA</small><strong>0/100</strong></div></div>
-<div class="panel">
-<div class="eyebrow">Bientôt disponible</div>
-<h2>Les premières éditions arrivent</h2>
-<p>La collection est en préparation. Les visuels, tarifs et quantités disponibles seront présentés ici après validation. Aucune édition n'est actuellement annoncée comme mise en vente sur cette page.</p>
-<a class="cta" href="boutique.html">Voir la boutique FBA</a>
+<section class="edition-hero" aria-labelledby="edition-title">
+<div>
+<div class="eyebrow">FBA Wallpapers · Signature exclusive</div>
+<h1 id="edition-title">Éditions <span>limitées.</span></h1>
+<p class="intro">Certaines créations méritent de devenir rares. Découvrez le futur espace des œuvres exclusives FBA : une direction artistique premium, des séries numérotées et une présentation soignée.</p>
+<div class="ticket" aria-label="Symbole FBA : billet d'or zéro sur cent"><div><small>BILLET D'OR · SIGNATURE FBA</small><strong>0/100</strong></div></div>
+<p class="preview-disclaimer">Le billet 0/100 est un symbole de la collection, pas un exemplaire actuellement commercialisé.</p>
 </div>
-<h2>Le concept</h2>
-<div class="steps">
-<div class="step"><b>01 · Exclusivité</b><p>Des créations distinctes des collections habituelles.</p></div>
-<div class="step"><b>02 · Numérotation</b><p>Une série limitée à 100 exemplaires par édition, sous réserve de la configuration finale de vente.</p></div>
-<div class="step"><b>03 · Achat sécurisé</b><p>Consultation sur FBA, panier sur le site et paiement sécurisé lorsque la boutique sera opérationnelle.</p></div>
+<div class="gold-art" role="img" aria-label="Illustration décorative dorée des éditions limitées FBA"><div class="gold-art-inner"><small>FBA · LIMITED</small><strong>0/100</strong><small>ÉDITION SIGNATURE</small></div></div>
+</section>
+<section aria-labelledby="collections-title">
+<div class="section-heading"><div class="eyebrow">La galerie</div><h2 id="collections-title">Les prochaines éditions</h2><p>Trois univers visuels envisagés pour les premières sorties. Ces cartes sont des maquettes de présentation : les œuvres définitives et leurs tarifs ne sont pas encore annoncés.</p></div>
+<div class="edition-grid">
+<article class="edition-card"><div class="edition-art" aria-hidden="true"><span>01</span><i>VITESSE & PRESTIGE</i></div><div class="edition-content"><span class="edition-status">Concept en préparation</span><h3>Légendes mécaniques</h3><p>Une direction artistique consacrée aux machines d'exception et à la vitesse.</p></div></article>
+<article class="edition-card"><div class="edition-art" aria-hidden="true"><span>02</span><i>HORIZONS INFINIS</i></div><div class="edition-content"><span class="edition-status">Concept en préparation</span><h3>Au-delà des nuages</h3><p>Des compositions aériennes spectaculaires, pensées comme des pièces de collection.</p></div></article>
+<article class="edition-card"><div class="edition-art" aria-hidden="true"><span>03</span><i>ÉMOTION & CONTRASTE</i></div><div class="edition-content"><span class="edition-status">Concept en préparation</span><h3>Instants d'exception</h3><p>Des œuvres visuelles originales autour de la lumière et des contrastes.</p></div></article>
 </div>
-<p class="note">Les aperçus publics ne donnent pas accès aux fichiers originaux haute définition. Les fichiers numériques achetés seront délivrés après confirmation du paiement, une fois le parcours commercial activé.</p>
+</section>
+<section aria-labelledby="concept-title"><div class="section-heading"><div class="eyebrow">Le principe</div><h2 id="concept-title">Une œuvre. Une série. Une identité.</h2><p>Chaque future édition sera présentée avec sa fiche détaillée et les conditions exactes de sa disponibilité.</p></div>
+<div class="timeline"><div><strong>01 · Découvrir</strong><p>Consultez l'aperçu de l'œuvre, son histoire et ses caractéristiques directement sur FBA.</p></div><div><strong>02 · Choisir</strong><p>Découvrez le format proposé, le prix et le nombre d'exemplaires, lorsqu'ils seront définis.</p></div><div><strong>03 · Commander</strong><p>Ajoutez au panier FBA et finalisez via un paiement sécurisé, une fois la boutique activée.</p></div></div>
+</section>
+<section aria-labelledby="faq-title"><div class="section-heading"><div class="eyebrow">Questions fréquentes</div><h2 id="faq-title">Ce qu'il faut savoir</h2></div><div class="faq">
+<details><summary>Que signifie le billet d'or 0/100 ?</summary><p>C'est la signature visuelle envisagée pour les Éditions limitées FBA. La numérotation commerciale et ses modalités seront précisées avant toute vente.</p></details>
+<details><summary>Les éditions sont-elles déjà disponibles ?</summary><p>Non. Cette page présente un projet en préparation. Aucun article ni stock n'est actuellement proposé à l'achat ici.</p></details>
+<details><summary>Peut-on télécharger les créations depuis cette page ?</summary><p>Non. Les aperçus publics ne donnent pas accès aux fichiers haute définition. Les produits numériques seront remis uniquement selon les conditions d'achat applicables après paiement.</p></details>
+</div></section>
+<div class="panel" style="margin-top:55px"><div class="eyebrow">Prochaine ouverture</div><h2>La collection prend forme</h2><p>Les premières œuvres, les prix et les modalités d'achat seront publiés ici lorsqu'ils seront prêts. En attendant, explorez les collections FBA existantes.</p><a class="cta" href="fba-wallpapers.html">Explorer FBA Wallpapers</a></div>
+<p class="note">Page de prévisualisation. Aucun paiement, réservation ou achat n'est possible depuis cette rubrique à ce stade.</p>
 </main>
 <footer>© 2026 FondEcranByAlexis — L'image prend vie.</footer>
 </body>
