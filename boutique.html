@@ -164,6 +164,17 @@ footer {
   line-height:1.8;
 }
 footer strong {color:var(--red)}
+
+/* Panier de démonstration Preview */
+.demo-banner{margin:24px auto 0;max-width:1050px;padding:15px 18px;border:1px solid #94783e;background:#2a2416;color:#f7dfa6;border-radius:10px;text-align:center;font-size:14px}
+.shop-tools{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:35px 0 18px}
+.shop-tools h2{margin:0}.cart-toggle{border:1px solid #e1474e;background:#a7131b;color:white;padding:12px 17px;border-radius:9px;font-weight:800;cursor:pointer}
+.demo-products{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
+.demo-product{border:1px solid #373a45;background:#15171d;border-radius:13px;overflow:hidden}
+.demo-product .visual{min-height:180px}.demo-product .body{padding:19px}.demo-product h3{margin:0 0 7px}.demo-product p{font-size:14px;color:#abb0bc;line-height:1.5}.demo-product .price{font-size:24px;font-weight:900;margin:10px 0}.demo-product button{width:100%;border:0;border-radius:8px;padding:12px;background:#d71920;color:white;font-weight:800;cursor:pointer}
+.demo-product button:focus-visible,.cart-toggle:focus-visible,.cart-panel button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cart-panel{margin:25px 0;padding:22px;border:1px solid #666b76;background:#171b24;border-radius:15px}.cart-panel[hidden]{display:none}.cart-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.cart-head h3{margin:0}.cart-head button{border:1px solid #5b6270;background:transparent;color:white;padding:8px 12px;border-radius:7px;cursor:pointer}
+.cart-line{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 0;border-bottom:1px solid #383d49;flex-wrap:wrap}.cart-line strong{display:block}.cart-line small{color:#adb4c1}.qty{display:flex;align-items:center;gap:12px}.qty button{background:#333a49;color:white;border:0;border-radius:7px;width:32px;height:32px;font-size:19px;cursor:pointer}.cart-total{text-align:right;font-size:22px;font-weight:800;margin-top:18px}.cart-warning{font-size:13px;color:#c4bfb3;margin-top:15px}.checkout-disabled{display:block;margin-top:15px;width:100%;padding:14px;border:1px solid #686a72;border-radius:9px;background:#353840;color:#d2d2d5;font-weight:800;cursor:not-allowed}
 </style>
 <link rel="stylesheet" href="fba-nav.css?v=20261110-0815">
 <script src="fba-nav.js?v=20261110-0815" defer></script>
@@ -191,6 +202,18 @@ footer strong {color:var(--red)}
     de l'aviation, des métiers, de la nature et de bien
     d'autres passions.
   </p>
+</section>
+
+
+<section id="panier-demo" aria-label="Boutique de démonstration">
+<div class="demo-banner"><strong>VERSION TEST — FBA PREVIEW</strong><br>Produits et tarifs fictifs pour tester le panier. Aucun achat ni paiement possible.</div>
+<div class="shop-tools"><h2 class="section-title">TESTER LE FUTUR PANIER</h2><button class="cart-toggle" id="openCart" type="button" aria-controls="cartPanel" aria-expanded="false">Mon panier (<span id="cartCount">0</span>)</button></div>
+<div class="demo-products" id="demoProducts">
+<article class="demo-product"><div class="visual"><strong>F1<br>WALLPAPER</strong></div><div class="body"><h3>Fond d'écran F1</h3><p>Article numérique fictif pour les essais.</p><div class="price">3,90 €</div><button type="button" data-add="f1">Ajouter au panier</button></div></article>
+<article class="demo-product"><div class="visual"><strong>AVIATION<br>WALLPAPER</strong></div><div class="body"><h3>Fond d'écran Aviation</h3><p>Article numérique fictif pour les essais.</p><div class="price">3,90 €</div><button type="button" data-add="aviation">Ajouter au panier</button></div></article>
+<article class="demo-product"><div class="visual"><strong>PACK<br>COLLECTOR</strong></div><div class="body"><h3>Pack de 5 fonds</h3><p>Pack numérique fictif pour les essais.</p><div class="price">12,90 €</div><button type="button" data-add="pack">Ajouter au panier</button></div></article>
+</div>
+<div id="cartPanel" class="cart-panel" hidden><div class="cart-head"><h3>Votre panier de démonstration</h3><button type="button" id="closeCart" aria-label="Fermer le panier">Fermer ×</button></div><div id="cartLines" aria-live="polite"></div><div class="cart-total" id="cartTotal">Total : 0,00 €</div><button class="checkout-disabled" disabled type="button">Paiement indisponible — Preview</button><p class="cart-warning">Simulation locale : le panier est mémorisé uniquement dans ce navigateur. Aucune commande n'est envoyée et aucun fichier HD n'est accessible.</p></div>
 </section>
 
 <section id="tableaux">
@@ -301,5 +324,20 @@ footer strong {color:var(--red)}
   © 2026 FondEcranByAlexis — Tous droits réservés.
 </footer>
 
+<script>
+(()=>{'use strict';
+const catalog={f1:{name:"Fond d'écran F1",cents:390},aviation:{name:"Fond d'écran Aviation",cents:390},pack:{name:"Pack de 5 fonds",cents:1290}};
+const key='fba_preview_cart_demo_v1';let cart={};
+try{const saved=JSON.parse(localStorage.getItem(key)||'{}');for(const id of Object.keys(catalog)){if(Number.isSafeInteger(saved[id])&&saved[id]>0)cart[id]=Math.min(saved[id],99)}}catch(e){}
+const panel=document.getElementById('cartPanel'),lines=document.getElementById('cartLines'),count=document.getElementById('cartCount'),total=document.getElementById('cartTotal'),toggle=document.getElementById('openCart');
+const euro=n=>(n/100).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+function save(){try{localStorage.setItem(key,JSON.stringify(cart))}catch(e){}}
+function render(){lines.replaceChildren();let sum=0,n=0;for(const [id,q] of Object.entries(cart)){const item=catalog[id];if(!item||q<1)continue;sum+=item.cents*q;n+=q;const row=document.createElement('div');row.className='cart-line';const desc=document.createElement('div');const name=document.createElement('strong');name.textContent=item.name;const subtotal=document.createElement('small');subtotal.textContent=euro(item.cents*q);desc.append(name,subtotal);const controls=document.createElement('div');controls.className='qty';const minus=document.createElement('button');minus.type='button';minus.textContent='−';minus.setAttribute('aria-label','Retirer une unité de '+item.name);minus.onclick=()=>change(id,-1);const qty=document.createElement('span');qty.textContent=q;const plus=document.createElement('button');plus.type='button';plus.textContent='+';plus.setAttribute('aria-label','Ajouter une unité de '+item.name);plus.onclick=()=>change(id,1);controls.append(minus,qty,plus);row.append(desc,controls);lines.append(row)}if(!n){const p=document.createElement('p');p.textContent='Votre panier est vide.';lines.append(p)}count.textContent=n;total.textContent='Total : '+euro(sum)}
+function change(id,delta){cart[id]=Math.max(0,Math.min(99,(cart[id]||0)+delta));if(!cart[id])delete cart[id];save();render()}
+function show(visible){panel.hidden=!visible;toggle.setAttribute('aria-expanded',String(visible));if(visible)panel.scrollIntoView({behavior:'smooth',block:'nearest'})}
+document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>{change(b.dataset.add,1);show(true)}));
+toggle.addEventListener('click',()=>show(panel.hidden));document.getElementById('closeCart').addEventListener('click',()=>show(false));render();
+})();
+</script>
 </body>
 </html>
