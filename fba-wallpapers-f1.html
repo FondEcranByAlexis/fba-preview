@@ -471,6 +471,9 @@ footer strong { color: #ddd; }
     transform: none;
   }
 }
+
+/* Panier partagé Preview : ajout directement depuis les collections */
+.fba-add-f1{display:block;width:100%;margin-top:11px;padding:12px 8px;border:1px solid #ed1726;border-radius:7px;background:#ad1725;color:white;font:800 12px/1.4 Arial,sans-serif;cursor:pointer}.fba-add-f1:hover,.fba-add-f1:focus-visible{background:#ed1726}.fba-f1-cartbar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:15px;margin:0 auto 22px;border:1px solid #454955;border-radius:12px;background:#151820}.fba-f1-cartbar a{display:inline-block;padding:9px 15px;border:1px solid #ed1726;border-radius:7px;font-weight:800}.fba-f1-cartbar span{color:#c7cbd4}.fba-f1-feedback{min-height:22px;text-align:center;color:#f1b2b7;font-size:13px}
 </style>
 <link rel="stylesheet" href="fba-nav.css?v=20261110-0815">
 <script src="fba-nav.js?v=20261110-0815" defer></script>
@@ -556,6 +559,7 @@ footer strong { color: #ddd; }
       <a href="#circuits">CIRCUITS</a>
     </div>
 
+    <div class="fba-f1-cartbar"><span id="fbaF1CartCount">Panier : 0 article</span><a href="panier.html">VOIR MON PANIER</a></div><p id="fbaF1Feedback" class="fba-f1-feedback" role="status" aria-live="polite"></p>
     <div class="wallpaper-grid">
 
       <!-- RED BULL -->
@@ -572,6 +576,7 @@ footer strong { color: #ddd; }
              href="pilote-max-verstappen.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="max-verstappen" aria-label="Ajouter le portrait de max verstappen au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -587,6 +592,7 @@ footer strong { color: #ddd; }
              href="pilote-isack-hadjar.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="isack-hadjar" aria-label="Ajouter le portrait de isack hadjar au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -604,6 +610,7 @@ footer strong { color: #ddd; }
              href="pilote-charles-leclerc.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="charles-leclerc" aria-label="Ajouter le portrait de charles leclerc au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -619,6 +626,7 @@ footer strong { color: #ddd; }
              href="pilote-lewis-hamilton.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="lewis-hamilton" aria-label="Ajouter le portrait de lewis hamilton au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -636,6 +644,7 @@ footer strong { color: #ddd; }
              href="pilote-george-russell.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="george-russell" aria-label="Ajouter le portrait de george russell au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -651,6 +660,7 @@ footer strong { color: #ddd; }
              href="pilote-kimi-antonelli.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="kimi-antonelli" aria-label="Ajouter le portrait de kimi antonelli au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -668,6 +678,7 @@ footer strong { color: #ddd; }
              href="pilote-lando-norris.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="lando-norris" aria-label="Ajouter le portrait de lando norris au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -683,6 +694,7 @@ footer strong { color: #ddd; }
              href="pilote-oscar-piastri.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="oscar-piastri" aria-label="Ajouter le portrait de oscar piastri au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -700,6 +712,7 @@ footer strong { color: #ddd; }
              href="pilote-fernando-alonso.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="fernando-alonso" aria-label="Ajouter le portrait de fernando alonso au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -715,6 +728,7 @@ footer strong { color: #ddd; }
              href="pilote-lance-stroll.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="lance-stroll" aria-label="Ajouter le portrait de lance stroll au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -732,6 +746,7 @@ footer strong { color: #ddd; }
              href="pilote-liam-lawson.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="liam-lawson" aria-label="Ajouter le portrait de liam lawson au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -747,6 +762,7 @@ footer strong { color: #ddd; }
              href="pilote-arvid-lindblad.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="arvid-lindblad" aria-label="Ajouter le portrait de arvid lindblad au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -764,6 +780,7 @@ footer strong { color: #ddd; }
              href="pilote-pierre-gasly.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="pierre-gasly" aria-label="Ajouter le portrait de pierre gasly au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -779,6 +796,7 @@ footer strong { color: #ddd; }
              href="pilote-franco-colapinto.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="franco-colapinto" aria-label="Ajouter le portrait de franco colapinto au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -796,6 +814,7 @@ footer strong { color: #ddd; }
              href="pilote-nico-hulkenberg.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="nico-hulkenberg" aria-label="Ajouter le portrait de nico hulkenberg au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -811,6 +830,7 @@ footer strong { color: #ddd; }
              href="pilote-gabriel-bortoleto.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="gabriel-bortoleto" aria-label="Ajouter le portrait de gabriel bortoleto au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -828,6 +848,7 @@ footer strong { color: #ddd; }
              href="pilote-esteban-ocon.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="esteban-ocon" aria-label="Ajouter le portrait de esteban ocon au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -843,6 +864,7 @@ footer strong { color: #ddd; }
              href="pilote-oliver-bearman.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="oliver-bearman" aria-label="Ajouter le portrait de oliver bearman au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -860,6 +882,7 @@ footer strong { color: #ddd; }
              href="pilote-sergio-perez.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="sergio-perez" aria-label="Ajouter le portrait de sergio perez au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -875,6 +898,7 @@ footer strong { color: #ddd; }
              href="pilote-valtteri-bottas.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="valtteri-bottas" aria-label="Ajouter le portrait de valtteri bottas au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -892,6 +916,7 @@ footer strong { color: #ddd; }
              href="pilote-alexander-albon.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="alexander-albon" aria-label="Ajouter le portrait de alexander albon au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -907,6 +932,7 @@ footer strong { color: #ddd; }
              href="pilote-carlos-sainz.html">
             VOIR LA FICHE
           </a>
+          <button type="button" class="fba-add-f1" data-fba-pilot="carlos-sainz" aria-label="Ajouter le portrait de carlos sainz au panier">AJOUTER AU PANIER · 1,99 €</button>
         </div>
       </article>
 
@@ -1218,5 +1244,6 @@ footer strong { color: #ddd; }
 
 </footer>
 
+<script>(()=>{'use strict';const KEY='fba_preview_cart_v2';const count=document.getElementById('fbaF1CartCount'),feedback=document.getElementById('fbaF1Feedback');function get(){try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(a)?a:[]}catch{return []}}function update(){const total=get().reduce((n,x)=>n+(Number(x.qty)||0),0);count.textContent='Panier : '+total+' article'+(total>1?'s':'')}document.querySelectorAll('[data-fba-pilot]').forEach(button=>button.addEventListener('click',()=>{const slug=button.dataset.fbaPilot;const a=get();const id='pilot:'+slug+':Portrait';const item=a.find(x=>x.id===id);if(item)item.qty=(Number(item.qty)||0)+1;else a.push({id,qty:1});try{localStorage.setItem(KEY,JSON.stringify(a));update();feedback.textContent='Portrait ajouté au panier de démonstration. Aucun paiement activé.'}catch{feedback.textContent='Impossible de mémoriser le panier dans ce navigateur.'}}));update();window.addEventListener('storage',update)})();</script>
 </body>
 </html>
