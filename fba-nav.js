@@ -2,8 +2,9 @@
 const sections=[
 {title:'FBA Wallpapers',links:[
 ['Toutes les collections','fba-wallpapers.html'],
-{title:'Formule 1',links:[['Tous les pilotes','fba-wallpapers-f1.html'],['Monoplaces',null],['Circuits',null],['Écuries',null]]},
-{title:'MotoGP',links:[['Pilotes',null],['Motos de course',null],['Circuits',null]]},
+{title:'Formule 1',links:[{title:'Saison 2026',links:[['Tous les pilotes','fba-wallpapers-f1.html'],['Monoplaces','fba-f1-monoplaces-2026.html'],['Circuits','fba-f1-circuits-2026.html'],['Écuries','fba-f1-ecuries-2026.html']]}]},
+{title:'MotoGP',links:[{title:'Saison 2026',links:[['Pilotes','fba-motogp-2026.html#pilotes'],['Motos de course','fba-motogp-2026.html#motos'],['Équipes','fba-motogp-2026.html#equipes'],['Circuits','fba-motogp-2026.html#circuits']]}]},
+{title:'Cyclisme',links:[{title:'Tour de France — 2026',links:[['Les 21 étapes','fba-tour-de-france-2026.html#etapes'],['Coureurs','fba-tour-de-france-2026.html#coureurs'],['Équipes','fba-tour-de-france-2026.html#equipes'],['Coulisses du cyclisme','fba-tour-de-france-2026.html#coulisses']]}]},
 {title:'Aviation',links:[['Avions de chasse',null],['Avions civils',null],['Hélicoptères',null]]},
 {title:'Secours et interventions',links:[['Pompiers',null],['Véhicules de secours',null],['Hélicoptères de secours',null]]},
 {title:'Automobile',links:[['Voitures de sport',null],['Voitures de légende',null]]},
