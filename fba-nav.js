@@ -1,6 +1,17 @@
 (()=>{'use strict';
 const sections=[
-{title:'FBA Wallpapers',links:[['Toutes les collections','fba-wallpapers.html'],['Formule 1 — 22 pilotes','fba-wallpapers-f1.html'],['Éditions limitées','editions-limitees.html'],['FBA Club (projet)','fba-club.html'],['Boutique et panier','boutique.html']]},
+{title:'FBA Wallpapers',links:[
+['Toutes les collections','fba-wallpapers.html'],
+{title:'Formule 1',links:[['Tous les pilotes','fba-wallpapers-f1.html'],['Monoplaces',null],['Circuits',null],['Écuries',null]]},
+{title:'MotoGP',links:[['Pilotes',null],['Motos de course',null],['Circuits',null]]},
+{title:'Aviation',links:[['Avions de chasse',null],['Avions civils',null],['Hélicoptères',null]]},
+{title:'Secours et interventions',links:[['Pompiers',null],['Véhicules de secours',null],['Hélicoptères de secours',null]]},
+{title:'Automobile',links:[['Voitures de sport',null],['Voitures de légende',null]]},
+{title:'Trains',links:[['Trains à grande vitesse',null],['Locomotives',null]]},
+['Éditions limitées','editions-limitees.html'],
+['Boutique générale','boutique.html'],
+['Mon panier','panier.html'],
+['FBA Club (projet)','fba-club.html']]},
 {title:'FBA Games',links:[['Studio FBA Games (en préparation)',null],['Business Empire Simulator (en préparation)',null]]},
 {title:'Nos univers',links:[['Métiers','metiers.html'],['Studio','fba-studio.html'],['Secours','fba-secours.html'],['Forces de l’ordre','fba-force-ordre.html'],['BTP','fba-btp.html'],['Défense','fba-defense.html'],['Métiers insolites','metiers-insolites.html'],['Reportage','fba-reportage.html'],['Productions','fba-productions.html']]}
 ];
@@ -17,7 +28,8 @@ const search=document.createElement('input');search.id='fbaNavSearch';search.typ
 const root=document.createElement('div');drawer.append(root);
 function addLink(parent,text,url){if(!url){const p=document.createElement('p');p.className='fba-nav-pending';p.textContent=text;parent.append(p);return;}const a=document.createElement('a');a.href=url;a.textContent=text;parent.append(a);}
 addLink(root,'Accueil','index.html');
-for(const section of sections){const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent=section.title;details.append(summary);for(const [name,url] of section.links)addLink(details,name,url);root.append(details);}
+function addGroup(parent,group,nested=false){const details=document.createElement('details');if(nested)details.className='fba-nav-subgroup';const summary=document.createElement('summary');summary.textContent=group.title;details.append(summary);for(const entry of group.links){if(Array.isArray(entry))addLink(details,entry[0],entry[1]);else addGroup(details,entry,true);}parent.append(details);}
+for(const section of sections)addGroup(root,section);
 addLink(root,'À propos','index.html#apropos');addLink(root,'Contact','index.html#contact');
 const empty=document.createElement('p');empty.className='fba-nav-empty';empty.textContent='Aucune rubrique trouvée.';empty.hidden=true;drawer.append(empty);
 document.body.append(overlay,drawer);
@@ -27,5 +39,5 @@ button.addEventListener('click',()=>openMenu(drawer.hidden));overlay.addEventLis
 drawer.addEventListener('click',e=>{if(e.target.closest('a'))openMenu(false);});
 document.addEventListener('keydown',e=>{if(drawer.hidden)return;if(e.key==='Escape'){openMenu(false);return;}if(e.key!=='Tab')return;const visible=[...drawer.querySelectorAll('button,input,summary,a[href]')].filter(el=>el.getClientRects().length);const i=visible.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();visible[visible.length-1].focus();}else if(!e.shiftKey&&i===visible.length-1){e.preventDefault();visible[0].focus();}});
 const normalize=s=>s.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-search.addEventListener('input',()=>{const q=normalize(search.value.trim());let count=0;for(const el of root.children){if(el.tagName==='DETAILS'){const links=[...el.querySelectorAll('a,.fba-nav-pending')];const match=normalize(el.querySelector('summary').textContent).includes(q);links.forEach(a=>a.hidden=!!q&&!match&&!normalize(a.textContent).includes(q));el.hidden=!!q&&!match&&!links.some(a=>!a.hidden);if(q&&!el.hidden)el.open=true;}else el.hidden=!!q&&!normalize(el.textContent).includes(q);if(!el.hidden)count++;}empty.hidden=count!==0;});
+search.addEventListener('input',()=>{const q=normalize(search.value.trim());let count=0;for(const el of root.children){if(el.tagName==='DETAILS'){const links=[...el.querySelectorAll('a,.fba-nav-pending')];const match=normalize(el.querySelector('summary').textContent).includes(q);links.forEach(a=>a.hidden=!!q&&!match&&!normalize(a.textContent).includes(q));for(const sub of el.querySelectorAll('details.fba-nav-subgroup')){const subMatch=normalize(sub.querySelector('summary').textContent).includes(q);if(q&&subMatch)sub.querySelectorAll('a,.fba-nav-pending').forEach(a=>a.hidden=false);sub.hidden=!!q&&!match&&!subMatch&&![...sub.querySelectorAll('a,.fba-nav-pending')].some(a=>!a.hidden);if(q&&!sub.hidden)sub.open=true;}el.hidden=!!q&&!match&&!links.some(a=>!a.hidden)&&![...el.querySelectorAll('details.fba-nav-subgroup')].some(sub=>!sub.hidden);if(q&&!el.hidden)el.open=true;}else el.hidden=!!q&&!normalize(el.textContent).includes(q);if(!el.hidden)count++;}empty.hidden=count!==0;});
 })();
