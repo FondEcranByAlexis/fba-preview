@@ -96,3 +96,10 @@ header.fba-global-header .fba-nav-button{position:relative!important;top:auto!im
  cursor:pointer!important;
  transform:none!important;
 }
+
+/* Sous-catégories FBA Wallpapers dans le menu hamburger */
+.fba-nav-drawer details.fba-nav-subgroup{margin:2px 0 5px 12px;border-left:2px solid #4d586b;border-top:0!important;padding-left:8px}
+.fba-nav-drawer details.fba-nav-subgroup>summary{font-size:14px;padding:10px 9px;color:#f3f4f7}
+.fba-nav-drawer details.fba-nav-subgroup>a{padding-left:20px;font-size:13px}
+.fba-nav-drawer details.fba-nav-subgroup>.fba-nav-pending{margin:3px 0 3px 18px;padding:7px 4px;color:#b3b9c4}
+.fba-nav-drawer details.fba-nav-subgroup>.fba-nav-pending::after{content:' · à venir';font-size:11px;color:#b7a47e}
