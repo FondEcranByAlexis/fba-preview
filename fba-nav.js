@@ -9,7 +9,9 @@ const button=document.createElement('button');button.type='button';button.classN
 const anchor=header.querySelector('.top')||header;anchor.append(button);
 const overlay=document.createElement('div');overlay.className='fba-nav-overlay';overlay.hidden=true;
 const drawer=document.createElement('aside');drawer.id='fbaNavDrawer';drawer.className='fba-nav-drawer';drawer.setAttribute('aria-label','Navigation FBA');drawer.hidden=true;drawer.inert=true;
-const title=document.createElement('p');title.className='fba-nav-title';title.textContent='Explorer FBA';drawer.append(title);
+const top=document.createElement('div');top.className='fba-nav-top';
+const title=document.createElement('p');title.className='fba-nav-title';title.textContent='Explorer FBA';top.append(title);
+const close=document.createElement('button');close.type='button';close.className='fba-nav-close';close.setAttribute('aria-label','Fermer le menu');close.textContent='×';top.append(close);drawer.append(top);
 const label=document.createElement('label');label.htmlFor='fbaNavSearch';label.textContent='Rechercher une rubrique';drawer.append(label);
 const search=document.createElement('input');search.id='fbaNavSearch';search.type='search';search.placeholder='Collections, pilotes, jeux…';drawer.append(search);
 const root=document.createElement('div');drawer.append(root);
@@ -20,10 +22,10 @@ addLink(root,'À propos','index.html#apropos');addLink(root,'Contact','index.htm
 const empty=document.createElement('p');empty.className='fba-nav-empty';empty.textContent='Aucune rubrique trouvée.';empty.hidden=true;drawer.append(empty);
 document.body.append(overlay,drawer);
 let returnFocus=null;
-function openMenu(open){if(open)returnFocus=document.activeElement;drawer.hidden=!open;drawer.inert=!open;overlay.hidden=!open;button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');document.body.classList.toggle('fba-nav-open',open);if(open)search.focus();else if(returnFocus&&returnFocus.isConnected)returnFocus.focus();}
-button.addEventListener('click',()=>openMenu(drawer.hidden));overlay.addEventListener('click',()=>openMenu(false));
+function openMenu(open){if(open)returnFocus=document.activeElement;drawer.hidden=!open;drawer.inert=!open;overlay.hidden=!open;button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');document.body.classList.toggle('fba-nav-open',open);if(open)close.focus();else if(returnFocus&&returnFocus.isConnected)returnFocus.focus();}
+button.addEventListener('click',()=>openMenu(drawer.hidden));overlay.addEventListener('click',()=>openMenu(false));close.addEventListener('click',()=>openMenu(false));
 drawer.addEventListener('click',e=>{if(e.target.closest('a'))openMenu(false);});
-document.addEventListener('keydown',e=>{if(drawer.hidden)return;if(e.key==='Escape'){openMenu(false);return;}if(e.key!=='Tab')return;const visible=[button,...drawer.querySelectorAll('input,summary,a[href]')].filter(el=>el.getClientRects().length);const i=visible.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();visible[visible.length-1].focus();}else if(!e.shiftKey&&i===visible.length-1){e.preventDefault();visible[0].focus();}});
+document.addEventListener('keydown',e=>{if(drawer.hidden)return;if(e.key==='Escape'){openMenu(false);return;}if(e.key!=='Tab')return;const visible=[...drawer.querySelectorAll('button,input,summary,a[href]')].filter(el=>el.getClientRects().length);const i=visible.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();visible[visible.length-1].focus();}else if(!e.shiftKey&&i===visible.length-1){e.preventDefault();visible[0].focus();}});
 const normalize=s=>s.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 search.addEventListener('input',()=>{const q=normalize(search.value.trim());let count=0;for(const el of root.children){if(el.tagName==='DETAILS'){const links=[...el.querySelectorAll('a,.fba-nav-pending')];const match=normalize(el.querySelector('summary').textContent).includes(q);links.forEach(a=>a.hidden=!!q&&!match&&!normalize(a.textContent).includes(q));el.hidden=!!q&&!match&&!links.some(a=>!a.hidden);if(q&&!el.hidden)el.open=true;}else el.hidden=!!q&&!normalize(el.textContent).includes(q);if(!el.hidden)count++;}empty.hidden=count!==0;});
 })();
