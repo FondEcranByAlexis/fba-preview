@@ -13,3 +13,14 @@
 .fba-nav-drawer .fba-nav-title{color:#fff;font-size:20px;font-weight:800;margin:0 0 12px}.fba-nav-drawer .fba-nav-empty{color:#bfc8d6}.fba-nav-drawer .fba-nav-pending{font-size:12px;color:#c7af7e}
 body.fba-nav-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.fba-nav-button i{transition:none}}
+
+/* Consistent mobile-first header across all FBA preview pages */
+header.fba-global-header{position:sticky!important;top:0!important;left:auto!important;right:auto!important;z-index:1000!important;display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;width:100%!important;min-height:72px!important;margin:0!important;padding:12px max(18px,4vw)!important;background:#0b0e15!important;border-bottom:1px solid #303747!important;text-align:left!important;box-sizing:border-box!important}
+header.fba-global-header .fba-global-brand{display:inline-flex!important;align-items:center!important;flex:none!important;font:800 25px/1 system-ui,Arial,sans-serif!important;letter-spacing:1px!important;color:#f7f7fa!important;text-decoration:none!important;margin:0!important;padding:0!important}
+header.fba-global-header .fba-global-brand span{color:#ed1726!important}
+header.fba-global-header .fba-nav-button{position:relative!important;top:auto!important;left:auto!important;right:auto!important;margin:0!important;flex:none!important;z-index:1002!important}
+.fba-nav-drawer{padding:18px 22px 30px!important;z-index:1101!important}
+.fba-nav-overlay{z-index:1100!important}
+.fba-nav-drawer .fba-nav-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;margin-bottom:14px}
+.fba-nav-drawer .fba-nav-close{display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;background:#283246;color:#fff;border:1px solid #657188;border-radius:12px;font:normal 32px/1 system-ui,Arial,sans-serif;cursor:pointer}
+.fba-nav-drawer .fba-nav-close:focus-visible,.fba-nav-button:focus-visible{outline:3px solid #e5bc70;outline-offset:3px}
