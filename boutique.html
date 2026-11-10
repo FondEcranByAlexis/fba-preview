@@ -184,7 +184,7 @@ footer strong {color:var(--red)}
 .cart-discount{color:#95e1b6;font-size:14px;font-weight:bold;line-height:1.5;margin:14px 0 0}
 
 /* Respecter l'attribut hidden : le bloc de secours n'apparaît qu'en cas d'image manquante. */
-.f1-art-placeholder[hidden]{display:none!important}
+.f1-art-placeholder[hidden],.f1-shop-card[hidden]{display:none!important}
 /* FBA Preview — confort mobile boutique, sans changement de panier */
 .f1-shop-card,.pricing-card,.demo-product{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .f1-shop-card:hover,.pricing-card:hover,.demo-product:hover{border-color:#7e4650;box-shadow:0 8px 24px #0005}
@@ -224,6 +224,21 @@ footer strong {color:var(--red)}
   .pack-choices{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.f1-shop-card,.pricing-card,.demo-product{transition:none}}
+
+/* FBA Preview : entrée de boutique générale et recherche du catalogue existant */
+.fba-catalogue-guide{margin:24px 0 28px;padding:24px;border:1px solid #383d4a;border-radius:16px;background:linear-gradient(145deg,#191c25,#101217)}
+.fba-catalogue-guide h2{margin:0 0 10px;font-size:23px;letter-spacing:1px}
+.fba-catalogue-guide>p{color:#b7bdc9;line-height:1.6}
+.fba-category-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:22px 0}
+.fba-category-links>a,.fba-category-links>span{display:flex;flex-direction:column;justify-content:center;gap:7px;padding:15px 13px;min-height:74px;border:1px solid #555b69;border-radius:10px;background:#242834;color:#fff;text-decoration:none;font-weight:700}
+.fba-category-links>a:hover,.fba-category-links>a:focus-visible{border-color:#f0545c;background:#3a222a}
+.fba-category-links>span{opacity:.58}
+.fba-category-links small{font-size:11px;font-weight:400;color:#c8cbd4}
+.fba-search-label{display:block;margin:18px 0 9px;font-weight:700;font-size:14px}
+.fba-search{display:block;width:100%;min-height:48px;border:1px solid #6a7080;border-radius:9px;background:#0a0d14;color:#fff;padding:12px 14px;font-size:16px}
+.fba-search:focus-visible{outline:2px solid #ff6a70;outline-offset:2px}
+.fba-search-status{margin:10px 0 0!important;font-size:13px;color:#c8cbd4}
+@media(max-width:600px){.fba-catalogue-guide{padding:16px}.fba-category-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.fba-category-links>a,.fba-category-links>span{min-width:0;padding:12px 10px;font-size:13px}}
 </style>
 <link rel="stylesheet" href="fba-nav.css?v=20261110-0815">
 <script src="fba-nav.js?v=20261110-0815" defer></script>
@@ -246,14 +261,28 @@ footer strong {color:var(--red)}
   <h2>L'UNIVERS <span class="accent">FBA BOUTIQUE</span></h2>
   <p>
     Bienvenue dans l'espace commercial de FondEcranByAlexis.
-    Découvrez prochainement des tableaux décoratifs et des
-    créations numériques originales, inspirés de l'automobile,
-    de l'aviation, des métiers, de la nature et de bien
-    d'autres passions.
+    Explorez toutes les créations FBA au même endroit : fonds d'écran numériques, tableaux, affiches et futures éditions limitées. Ajoutez directement vos créations préférées au panier, sans passer par une autre boutique.
   </p>
 </section>
 
 
+<section class="fba-catalogue-guide" aria-label="Explorer le catalogue">
+<h2>TOUS LES UNIVERS FBA</h2>
+<p>Une seule boutique pour toutes nos créations. La Formule 1 est la première collection en préparation ; les autres univers seront ajoutés progressivement.</p>
+<div class="fba-category-links">
+<a href="#catalogue-f1">Formule 1 <small>22 pilotes</small></a>
+<a href="#tableaux">Tableaux & affiches <small>À venir</small></a>
+<a href="#numerique">Créations numériques <small>À venir</small></a>
+<span>Secours <small>À venir</small></span>
+<span>Hélicoptères <small>À venir</small></span>
+<span>Aviation <small>À venir</small></span>
+<span>Trains <small>À venir</small></span>
+<span>Automobile <small>À venir</small></span>
+</div>
+<label class="fba-search-label" for="fbaCatalogSearch">Rechercher une création dans le catalogue actuel</label>
+<input id="fbaCatalogSearch" class="fba-search" type="search" placeholder="Ex. : Leclerc, Ferrari, Verstappen…" autocomplete="off">
+<p id="fbaSearchStatus" class="fba-search-status" role="status" aria-live="polite">22 pilotes à découvrir</p>
+</section>
 <section id="catalogue-f1"><h2 class="section-title">FORMULE 1 — LES 22 PILOTES</h2><p class="preview-note">Portraits de référence provenant des fichiers du projet FBA. Les créations FBA finales et les images Racing/Célébration seront intégrées ensuite. Aucun téléchargement HD ni paiement.</p><div class="f1-shop-grid"><article class="f1-shop-card"><img src="https://raw.githubusercontent.com/FondEcranByAlexis/fba-site/main/images/pilotes/max-verstappen-photo.jpg" alt="Portrait de Max Verstappen" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="f1-art-placeholder" hidden>APERÇU INDISPONIBLE</div><div class="details"><h3>Max Verstappen</h3><p>Red Bull · Portrait, Racing et Célébration.</p><a href="pilote-max-verstappen.html">Voir la fiche pilote</a><div class="fba-pick"><label for="type-max-verstappen">Création</label><select id="type-max-verstappen" data-variant="max-verstappen"><option value="Portrait">Portrait</option><option value="Racing" disabled>Racing (à venir)</option><option value="Célébration" disabled>Célébration (à venir)</option></select><button type="button" data-pilot="max-verstappen">Ajouter au panier · 1,99 €</button></div></div></article>
 <article class="f1-shop-card"><img src="https://raw.githubusercontent.com/FondEcranByAlexis/fba-site/main/images/pilotes/isack-hadjar-photo.jpg" alt="Portrait de Isack Hadjar" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="f1-art-placeholder" hidden>APERÇU INDISPONIBLE</div><div class="details"><h3>Isack Hadjar</h3><p>Red Bull · Portrait, Racing et Célébration.</p><a href="pilote-isack-hadjar.html">Voir la fiche pilote</a><div class="fba-pick"><label for="type-isack-hadjar">Création</label><select id="type-isack-hadjar" data-variant="isack-hadjar"><option value="Portrait">Portrait</option><option value="Racing" disabled>Racing (à venir)</option><option value="Célébration" disabled>Célébration (à venir)</option></select><button type="button" data-pilot="isack-hadjar">Ajouter au panier · 1,99 €</button></div></div></article>
 <article class="f1-shop-card"><img src="https://raw.githubusercontent.com/FondEcranByAlexis/fba-site/main/images/pilotes/charles-leclerc-photo.jpg" alt="Portrait de Charles Leclerc" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="f1-art-placeholder" hidden>APERÇU INDISPONIBLE</div><div class="details"><h3>Charles Leclerc</h3><p>Ferrari · Portrait, Racing et Célébration.</p><a href="pilote-charles-leclerc.html">Voir la fiche pilote</a><div class="fba-pick"><label for="type-charles-leclerc">Création</label><select id="type-charles-leclerc" data-variant="charles-leclerc"><option value="Portrait">Portrait</option><option value="Racing" disabled>Racing (à venir)</option><option value="Célébration" disabled>Célébration (à venir)</option></select><button type="button" data-pilot="charles-leclerc">Ajouter au panier · 1,99 €</button></div></div></article>
@@ -428,6 +457,21 @@ toggle.addEventListener('click',()=>show(panel.hidden));byId('closeCart').addEve
 <button type="button" id="fbaBackTop" class="fba-back-top" aria-label="Retour en haut de la page" title="Retour en haut" hidden>↑</button>
 <script>
 (()=>{'use strict';const top=document.getElementById('fbaBackTop');const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const move=el=>el.scrollIntoView({behavior:reduce?'instant':'smooth',block:'start'});function update(){top.hidden=window.scrollY<450}window.addEventListener('scroll',update,{passive:true});update();top.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduce?'instant':'smooth'}));document.getElementById('continueShopping').addEventListener('click',()=>{const panel=document.getElementById('cartPanel');panel.hidden=true;document.getElementById('openCart').setAttribute('aria-expanded','false');move(window.FBA_lastShoppingCard?.isConnected ? window.FBA_lastShoppingCard : document.getElementById('catalogue-f1'))});})();
+</script>
+
+<script>
+(()=>{'use strict';
+const search=document.getElementById('fbaCatalogSearch');
+const status=document.getElementById('fbaSearchStatus');
+const cards=[...document.querySelectorAll('#catalogue-f1 .f1-shop-card')];
+if(!search||!status||!cards.length)return;
+const normalize=s=>s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('fr-FR');
+search.addEventListener('input',()=>{
+ const query=normalize(search.value.trim());let visible=0;
+ for(const card of cards){const match=normalize(card.textContent).includes(query);card.hidden=!match;if(match)visible++;}
+ status.textContent=visible+' pilote'+(visible>1?'s':'')+' trouvé'+(visible>1?'s':'')+(query?' pour « '+search.value.trim()+' »':'');
+});
+})();
 </script>
 </body>
 </html>
