@@ -13,6 +13,7 @@ const sections=[
 ['Boutique générale','boutique.html'],
 ['Mon panier','panier.html'],
 ['FBA Club (projet)','fba-club.html']]},
+{title:'Téléchargements gratuits',links:[['Tous les fonds gratuits','fba-gratuit.html'],['FBA Stars (à venir)','fba-gratuit.html#stars']]},
 {title:'FBA Games',links:[['Studio FBA Games (en préparation)',null],['Business Empire Simulator (en préparation)',null]]},
 {title:'Nos univers',links:[['Métiers','metiers.html'],['Studio','fba-studio.html'],['Secours','fba-secours.html'],['Forces de l’ordre','fba-force-ordre.html'],['BTP','fba-btp.html'],['Défense','fba-defense.html'],['Métiers insolites','metiers-insolites.html'],['Reportage','fba-reportage.html'],['Productions','fba-productions.html']]}
 ];
